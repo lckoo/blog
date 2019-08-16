@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[git常用命令]]></title>
+    <url>%2Fh-blog%2F2019%2F08%2F15%2F%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[设置账号ssh公钥1234# 输入命令，一路回车ssh-keygen -t rsa -C "xxxxx@xxxxx.com" # 查看生成的密钥cat ~/.ssh/id_rsa.pub]]></content>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[本地项目关联远程gitc仓库]]></title>
+    <url>%2Fh-blog%2F2019%2F05%2F22%2F%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8Bgitc%E4%BB%93%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[git 初始化1git init 12345678git remote add origin xxx.gitgit add -A# 拉取远程代码git pull origin master## 推送git push origin master 问题拉取错误12345fangmindeMBP:security-demos lichao$ git pull origin masterFrom https://gitee.com/lee26/Spring-boot-demos * branch master -&gt; FETCH_HEADfatal: refusing to merge unrelated histories 解决办法1git pull origin master --allow-unrelated-histories 推送错误12345678fangmindeMBP:security-demos lichao$ git push -u origin masterTo https://gitee.com/lee26/Spring-boot-demos.git ! [rejected] master -&gt; master (non-fast-forward)error: failed to push some refs to &apos;https://gitee.com/lee26/Spring-boot-demos.git&apos;hint: Updates were rejected because the tip of your current branch is behindhint: its remote counterpart. Integrate the remote changes (e.g.hint: &apos;git pull ...&apos;) before pushing again.hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details. 解决办法 先pull最新代码，再push]]></content>
+      <categories>
+        <category>技术笔记</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo 搭建博客过程]]></title>
+    <url>%2Fh-blog%2F2019%2F05%2F21%2F%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[安装主题12cd hexo/themesgit clone https://github.com/theme-next/hexo-theme-next.git 主题使用说明: https://theme-next.org/docs/ 安装搜索插件安装插件123# 在hexo 根目录cd hexonpm install hexo-generator-searchdb --save 配置 hexo/_config.yml12345search: path: search.xml field: post format: html limit: 10000 配置主题 next/_config.yml1234567891011# Local search# Dependencies: https://github.com/theme-next/hexo-generator-searchdblocal_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1 # unescape html strings to the readable one unescape: false]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fh-blog%2F2016%2F06%2F30%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start1Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
