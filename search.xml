@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[黑苹果|开启HIDPI]]></title>
+    <url>%2F2019%2F08%2F20%2Fhackintosh-tutorial-hidpi%2F</url>
+    <content type="text"><![CDATA[开启hidpi模式sudo defaults write /Library/Preferences/com.apple.windowserver.plist DisplayResolutionEnabled -bool true 检测您的显示器ioreg -lw0 | grep IODisplayPrefsKey 得到输出的结果 &quot;IODisplayPrefsKey&quot; = &quot;IOService:/AppleACPIPlatformExpert/PCI0@0/AppleACPIPCI/IGPU@2/AppleIntelFramebuffer@0/display0/AppleBacklightDisplay-610-a019&quot; &quot;IODisplayPrefsKey&quot; = &quot;IOService:/AppleACPIPlatformExpert/PCI0@0/AppleACPIPCI/IGPU@2/AppleIntelFramebuffer@2/display0/AppleDisplay-10ac-d06e&quot; 生成文件第二行的10ac 和 d06e为16进制的数值，对应文件名：/System/Library/Displays/Contents/Resources/Overrides/DisplayVendorID-10ac/DisplayProductID-d06e 并转化成10进制数字填入下面xml中 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt; &lt;plist version=&quot;1.0&quot;&gt; &lt;dict&gt; &lt;key&gt;DisplayProductName&lt;/key&gt; &lt;string&gt;DELL U2515H&lt;/string&gt; &lt;key&gt;DisplayProductID&lt;/key&gt; &lt;integer&gt;53358&lt;/integer&gt; &lt;key&gt;DisplayVendorID&lt;/key&gt; &lt;integer&gt;4268&lt;/integer&gt; &lt;key&gt;scale-resolutions&lt;/key&gt; &lt;array&gt; &lt;data&gt;AAAKAAAABaAAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAFAAAAAtAAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAPAAAACHAAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAHgAAABDgAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAMgAAABwgAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAGQAAAA4QAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAKAgAABaAAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAKrAAABgAAAAABACAAAA==&lt;/data&gt; &lt;data&gt;AAAFVgAAAwAAAAABACAAAA==&lt;/data&gt; &lt;/array&gt; &lt;/dict&gt; &lt;/plist&gt; 然后把文件拷贝到该目录： /System/Library/Displays/Contents/Resources/Overrides/DisplayVendorID-`10ac`/DisplayProductID-`d06e` 重新启动Mac重启即可切换设置的分辨率，如果设置中没有找到对应的分辨率，可以使用工具RDM来切换 参考文章： https://github.com/xzhih/one-key-hidpi/blob/master/README-zh.mdhttps://www.tonymacx86.com/threads/adding-using-hidpi-custom-resolutions.133254/https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/https://zhuanlan.zhihu.com/p/36913571https://bbs.feng.com/read-htm-tid-11677019.html]]></content>
+      <categories>
+        <category>黑苹果</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[黑苹果|睡眠问题]]></title>
+    <url>%2F2019%2F08%2F19%2Fhackintosh-tutorial-sleep%2F</url>
+    <content type="text"><![CDATA[睡眠后唤醒自动重启参考tonymacx86解决方案：checked the power management preferences indelete all the com.apple.PowerManagement.* filesreboot ## 进入电源管理目录 cd /Library/Preferences ## 查看 ls ## 删除文件 sudo rm com.apple.PowerManagement*.plist 重启后会重新生成macOS re-generated the com.apple.PowerManagement* files]]></content>
+      <categories>
+        <category>黑苹果</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[黑苹果|USB定制]]></title>
+    <url>%2F2019%2F08%2F19%2Fhackintosh-tutorial-usb%2F</url>
+    <content type="text"><![CDATA[FAQ:为什么要做USB定制呢？最大的好处就是可以让睡眠唤醒都正常，不用担心系统升级，如果你遇到了睡眠唤醒异常，失效，不妨定制一下USB 整理自黑果小兵的博客1整理自黑果小兵的博客2 用到的工具 Hackintool 步骤是否 解除USB端口限制识别所有可用的端口更改接口类型导出修复文件 应用方案 方案1 复制 SSDT-EC.aml(如果有) SSDT-UIAC.aml 和 SSDT-USBX.aml (如果有) 到 EFI ▸ CLOVER ▸ ACPI ▸ patched 方案2 复制 SSDT-EC.aml (如果有) 到 EFI ▸ CLOVER ▸ ACPI ▸ patched复制 USBPorts.kext 到 EFI ▸ CLOVER ▸ kexts ▸ Other删除 USBInjectAll.kext]]></content>
+      <categories>
+        <category>黑苹果</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[git常用命令]]></title>
-    <url>%2Fh-blog%2F2019%2F08%2F15%2F%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[设置账号ssh公钥1234# 输入命令，一路回车ssh-keygen -t rsa -C "xxxxx@xxxxx.com" # 查看生成的密钥cat ~/.ssh/id_rsa.pub]]></content>
+    <url>%2F2019%2F08%2F15%2F%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[设置账号ssh公钥# 输入命令，一路回车 ssh-keygen -t rsa -C "xxxxx@xxxxx.com" # 查看生成的密钥 cat ~/.ssh/id_rsa.pub]]></content>
       <tags>
         <tag>技术</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[本地项目关联远程gitc仓库]]></title>
-    <url>%2Fh-blog%2F2019%2F05%2F22%2F%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8Bgitc%E4%BB%93%E5%BA%93%2F</url>
-    <content type="text"><![CDATA[git 初始化1git init 12345678git remote add origin xxx.gitgit add -A# 拉取远程代码git pull origin master## 推送git push origin master 问题拉取错误12345fangmindeMBP:security-demos lichao$ git pull origin masterFrom https://gitee.com/lee26/Spring-boot-demos * branch master -&gt; FETCH_HEADfatal: refusing to merge unrelated histories 解决办法1git pull origin master --allow-unrelated-histories 推送错误12345678fangmindeMBP:security-demos lichao$ git push -u origin masterTo https://gitee.com/lee26/Spring-boot-demos.git ! [rejected] master -&gt; master (non-fast-forward)error: failed to push some refs to &apos;https://gitee.com/lee26/Spring-boot-demos.git&apos;hint: Updates were rejected because the tip of your current branch is behindhint: its remote counterpart. Integrate the remote changes (e.g.hint: &apos;git pull ...&apos;) before pushing again.hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details. 解决办法 先pull最新代码，再push]]></content>
+    <url>%2F2019%2F05%2F22%2F%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8Bgitc%E4%BB%93%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[git 初始化git init git remote add origin xxx.git git add -A # 拉取远程代码 git pull origin master ## 推送 git push origin master 问题拉取错误 fangmindeMBP:security-demos lichao$ git pull origin master From https://gitee.com/lee26/Spring-boot-demos * branch master -> FETCH_HEAD fatal: refusing to merge unrelated histories 解决办法 git pull origin master --allow-unrelated-histories 推送错误fangmindeMBP:security-demos lichao$ git push -u origin master To https://gitee.com/lee26/Spring-boot-demos.git ! [rejected] master -> master (non-fast-forward) error: failed to push some refs to 'https://gitee.com/lee26/Spring-boot-demos.git' hint: Updates were rejected because the tip of your current branch is behind hint: its remote counterpart. Integrate the remote changes (e.g. hint: 'git pull ...') before pushing again. hint: See the 'Note about fast-forwards' in 'git push --help' for details. 解决办法 先pull最新代码，再push]]></content>
       <categories>
         <category>技术笔记</category>
       </categories>
@@ -21,12 +45,12 @@
   </entry>
   <entry>
     <title><![CDATA[hexo 搭建博客过程]]></title>
-    <url>%2Fh-blog%2F2019%2F05%2F21%2F%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
-    <content type="text"><![CDATA[安装主题12cd hexo/themesgit clone https://github.com/theme-next/hexo-theme-next.git 主题使用说明: https://theme-next.org/docs/ 安装搜索插件安装插件123# 在hexo 根目录cd hexonpm install hexo-generator-searchdb --save 配置 hexo/_config.yml12345search: path: search.xml field: post format: html limit: 10000 配置主题 next/_config.yml1234567891011# Local search# Dependencies: https://github.com/theme-next/hexo-generator-searchdblocal_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1 # unescape html strings to the readable one unescape: false]]></content>
+    <url>%2F2019%2F05%2F21%2F%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[安装主题cd hexo/themes git clone https://github.com/theme-next/hexo-theme-next.git 推荐主题 matery next 主题使用说明: https://theme-next.org/docs/ 安装搜索插件安装插件# 在hexo 根目录 cd hexo npm install hexo-generator-searchdb --save 配置 hexo/_config.ymlsearch: path: search.xml field: post format: html limit: 10000 配置主题 next/_config.yml# Local search # Dependencies: https://github.com/theme-next/hexo-generator-searchdb local_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1 # unescape html strings to the readable one unescape: false 设置优化博客优化设置 next 主题设置】]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2Fh-blog%2F2016%2F06%2F30%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start1Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <url>%2F2016%2F06%2F30%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start1Create a new post$ hexo new "My New Post" More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
